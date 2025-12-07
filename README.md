@@ -1,141 +1,86 @@
-Heart-Disease-Prediction
-Heart Disease prediction using Machine Learning and Scikit-Learn. Includes EDA, classification models, tuning, evaluation metrics, ROC curve, and feature importance.
+Heart Disease Prediction using Machine Learning
 
-## 🧠 Project Overview
+This project applies supervised Machine Learning techniques to predict the likelihood of heart disease based on clinical attributes such as age, sex, cholesterol, resting blood pressure, and chest pain type. The goal is to build a predictive model that helps identify patients who may be at higher cardiovascular risk.
 
-Given a patient’s clinical attributes, the goal is to predict whether they are likely to have **heart disease** (`target = 1`) or not (`target = 0`).
+🚀 Key Highlights
 
-This notebook walks through the full machine learning workflow:
+✓ End-to-end ML Pipeline
+✓ Exploratory Data Analysis
+✓ Baseline models comparison
+✓ Hyperparameter tuning
+✓ ROC curve evaluation
+✓ Feature importance analysis
+✓ Fully implemented in Jupyter Notebook
 
-1. Problem definition  
-2. Data loading & understanding  
-3. Exploratory Data Analysis (EDA)  
-4. Feature preparation  
-5. Model training & comparison  
-6. Hyperparameter tuning  
-7. Model evaluation (beyond accuracy)  
-8. Feature importance & interpretation  
+This project demonstrates practical clinical predictive analytics using Python and Scikit-Learn.
 
-The dataset used is the **Heart Disease** dataset derived from the **Cleveland** database (UCI Machine Learning Repository), in formatted form from **Kaggle**.  
-It contains **303 samples** and **14 features**.
+🧠 Project Workflow
 
----
+1️⃣ Load dataset
+2️⃣ Data preparation
+3️⃣ Exploratory data analysis (EDA)
+4️⃣ Feature engineering
+5️⃣ Train/test split
+6️⃣ Train multiple ML models
+7️⃣ Model selection
+8️⃣ Hyperparameter tuning
+9️⃣ Performance evaluation
+🔟 Feature importance interpretation
 
-## 📊 Dataset
+📦 Dataset
 
-**Features (independent variables):**
+This dataset contains 303 samples with 14 clinical features.
 
-- `age` – Age in years  
-- `sex` – 1 = male, 0 = female  
-- `cp` – Chest pain type (0–3)  
-- `trestbps` – Resting blood pressure (mm Hg)  
-- `chol` – Serum cholesterol (mg/dl)  
-- `fbs` – Fasting blood sugar > 120 mg/dl (1 = true, 0 = false)  
-- `restecg` – Resting ECG results (0–2)  
-- `thalach` – Maximum heart rate achieved  
-- `exang` – Exercise-induced angina (1 = yes, 0 = no)  
-- `oldpeak` – ST depression induced by exercise  
-- `slope` – Slope of the peak exercise ST segment (0–2)  
-- `ca` – Number of major vessels (0–3) colored by fluoroscopy  
-- `thal` – Thalium stress test result  
+Attribute	Description
+age	Age in years
+sex	0 = female, 1 = male
+cp	Chest pain type
+trestbps	Resting blood pressure
+chol	Serum cholesterol
+fbs	Fasting blood sugar
+restecg	Resting ECG results
+thalach	Max heart rate
+exang	Exercise angina
+oldpeak	ST depression
+slope	ST segment slope
+ca	Number of vessels
+thal	Thalassemia
+target	1 = heart disease, 0 = no disease
 
-**Target (dependent variable):**
+Source: UCI Heart Disease Dataset (Kaggle formatted)
 
-- `target` – 1 = heart disease present, 0 = no heart disease  
+🛠 Technologies Used
 
----
+Python
 
-## 🛠 Tech Stack
+NumPy
 
-- **Language:** Python  
-- **Libraries:**
-  - `pandas`, `numpy`
-  - `matplotlib`, `seaborn`
-  - `scikit-learn`
+Pandas
 
----
+Matplotlib
 
-## 🔍 Steps in the Notebook
+Seaborn
 
-### 1. Exploratory Data Analysis (EDA)
+Scikit-Learn
 
-- View dataset shape and head  
-- Summary statistics (`df.describe()`)  
-- Check data types and missing values (`df.info()`)  
-- Target distribution (`value_counts` + bar plot)  
-- Crosstabs and plots:
-  - Heart disease vs. **sex**
-  - Heart disease vs. **chest pain type (cp)**
-- Scatter plots:
-  - **Age** vs **Max Heart Rate (thalach)** colored by target  
-- Histograms:
-  - Age distribution  
-- Correlation matrix and **heatmap** for all numerical features  
+Jupyter Notebook
 
-### 2. Feature Preparation
-
-- (Optional) Handling missing values  
-- (Optional) Encoding categorical variables  
-- Defining:
-  ```python
-
-  Train/Test split:
-
-from sklearn.model_selection import train_test_split
-
-X_train, X_test, y_train, y_test = train_test_split(
-    X, y, test_size=0.2, random_state=42
-)
-
-3. Baseline Models
-
-Trained and compared:
-
-K-Nearest Neighbors (KNN)
-
-Logistic Regression
-
-Random Forest Classifier
-
-Accuracy on the test set (approx):
-
-KNN: ~0.69
-
-Logistic Regression: ~0.89
-
-Random Forest: ~0.84
-
-Logistic Regression performs best and is chosen as the main model.
-
-4. Hyperparameter Tuning
-
-KNN tuned manually over different values of n_neighbors.
-
-Logistic Regression and Random Forest tuned using:
+🔍 Models Trained
+Model	Status
+Logistic Regression	⭐ Best
+Random Forest	✓
+K-Nearest Neighbors	✓
+🔧 Hyperparameter Tuning
 
 RandomizedSearchCV
 
-GridSearchCV (for Logistic Regression)
+GridSearchCV
 
-The best Logistic Regression model (with tuned C and solver) is used for final evaluation.
+Manual tuning for KNN
 
-5. Model Evaluation (Beyond Accuracy)
+📊 Evaluation Metrics
 
-For the best model:
-
-ROC Curve and AUC using RocCurveDisplay.from_estimator
-
-Confusion matrix + heatmap via seaborn
-
-Classification report:
-
-Precision
-
-Recall
-
-F1-score
-
-Cross-validated metrics using cross_val_score:
+Evaluated using:
 
 Accuracy
 
@@ -143,73 +88,78 @@ Precision
 
 Recall
 
-F1-score
+F1 score
 
-Example average cross-validated performance (approx):
+Cross-validation
 
-Accuracy ≈ 0.85
+Confusion matrix
 
-Precision ≈ 0.82
+ROC curve & AUC
 
-Recall ≈ 0.93
+✔ Final Results (Approx.)
+Metric	Score
+Accuracy	~0.88–0.89
+Precision	~0.82
+Recall	~0.93
+F1 Score	~0.87
 
-F1-score ≈ 0.87
+Logistic Regression performed the best
 
-6. Feature Importance
+📈 Visualizations Included
 
-Using Logistic Regression coefficients:
+Target distribution
 
-Extract clf.coef_
+Correlation heatmap
 
-Map coefficients to feature names
+Chest pain vs. heart disease
 
-Visualize as a bar chart to see which features contribute most to predicting heart disease.
+Age vs. maximum heart rate
 
-▶️ How to Run This Project
+ROC curve
 
-Clone the repository
+Feature importance coefficients
 
-git clone https://github.com/<your-username>/Heart_Disease_Classification.ipynb.git
-cd Heart_Disease_Classification.ipynb
-
-
-Create and activate a virtual environment (optional but recommended)
-
-python -m venv venv
-source venv/bin/activate        # Linux/Mac
-venv\Scripts\activate           # Windows
-
-
-Install dependencies
-
-pip install -r requirements.txt
-
-
-(or manually install numpy, pandas, matplotlib, seaborn, scikit-learn)
-
-Launch Jupyter Notebook
-
+▶ How to Run This Project
+git clone https://github.com/yourusername/Heart-Disease-Classification.git
+cd Heart-Disease-Classification
 jupyter notebook
 
 
-Then open: Heart_Disease_Classification.ipynb and run all cells.
+Then open:
 
-📌 Results & Discussion
+Heart_Disease_Classification.ipynb
 
-Logistic Regression outperformed KNN and Random Forest on this dataset.
+📌 Use Case
 
-The model achieves ~88–89% test accuracy and strong recall for the positive (disease) class.
+Early detection of cardiovascular disease can help medical professionals identify high-risk patients and provide timely treatment decisions. ML-based screening tools provide insights that assist clinical judgement (not replace it).
 
-Feature importance analysis shows certain variables (e.g., chest pain type, slope, sex, ca, thal, oldpeak) have a stronger impact on predictions.
+🚀 Future Improvements
 
-🚀 Possible Improvements / Future Work
+Try XGBoost / CatBoost / LightGBM
 
-Try more advanced models (e.g., XGBoost, CatBoost, LightGBM).
+Build a Streamlit dashboard
 
-Add more preprocessing (scaling, outlier handling, better encoding).
+Deploy using Flask/FastAPI
 
-Use more data from other heart disease datasets to improve generalization.
+Use larger cardiology datasets
 
-Deploy the model as an API or simple web app (e.g., Streamlit or FastAPI).
-  X = df.drop(columns="target")
-  y = df["target"].values
+Experiment with deep learning models
+
+🧩 File Structure
+📁 Heart-Disease-Classification
+│── Heart_Disease_Classification.ipynb
+│── heart disease classification dataset.csv
+│── LICENSE
+│── README.md
+│── .gitignore
+
+📄 License
+
+This project is licensed under the MIT License – you are free to use and modify it.
+
+✨ Author
+
+Priyanka Burra
+🔗 GitHub: https://github.com/burrapriyanka85-pixel
+
+🔗 LinkedIn: https://www.linkedin.com/in/priyankaburra
